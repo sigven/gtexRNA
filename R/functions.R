@@ -252,8 +252,6 @@ get_sample_identifiers <- function(
 #
 # }
 
-<<<<<<< HEAD
-=======
 #
 # all_tpm_data <- data.frame()
 # for(t in c('Ovary','Pancreas','Prostate',
@@ -280,56 +278,6 @@ get_sample_identifiers <- function(
 #
 # }
 
-
-# adrenal_gland_samples <- get_gtex_sample_identifiers(
-#   max_autolysis_score = 1, analysis = "RNASEQ")
-# tpm_data_gtex <- get_gtex_tpm_data(sample_identifiers = adrenal_gland_samples$sample_id,
-#                                genes = c("SYTL5"))
-#
-tpm_data_acc_tcga <-
-  readRDS(file="~/project_data/analysis__tcga/tcga/data/rnaseq/tcga_rnaseq_ACC_release31_20211029.rds")
-df <- data.frame(tpm = tpm_data_acc_tcga$matrix$tpm$tumor[
-  rownames(tpm_data_acc_tcga$matrix$tpm$tumor) == "SYTL5",])
-df$sample_id <- rownames(df)
-tpm_data_tcga <- df_tcga %>%
-  magrittr::set_rownames(NULL) %>%
-  dplyr::mutate(symbol = "SYTL5", ensembl_gene_id = "ENSG00000147041.11",
-                tissue_type = "Adrenal Gland/ACC", sample_type = "tumor") %>%
-  dplyr::mutate(log2_tpm_plus_1 = log2(tpm + 1))
-
-# sytl5_df <- dplyr::bind_rows(
-#   dplyr::select(tpm_data_gtex, sample_id, log2_tpm_plus_1, sample_type),
-#   dplyr::select(tpm_data_tcga, sample_id, log2_tpm_plus_1, sample_type)
-# ) %>%
-#   dplyr::rename(expression = log2_tpm_plus_1) %>%
-#   dplyr::mutate(sample_type = dplyr::case_when(
-#     sample_type == "normal" ~ "normal (GTex, n = 198)",
-#     sample_type == "tumor" ~ "tumor (TCGA - ACC, n = 79)",
-#     TRUE ~ as.character(sample_type)
-#   ))
-#
-# group_comp <- list(c("normal (GTex, n = 198)","tumor (TCGA - ACC, n = 79)"))
-# p <- ggpubr::ggboxplot(sytl5_df, x = "sample_type", y = "expression",
-#                        color = "sample_type", palette = "grey",
-#                        add = "jitter", legend = "none") +
-#   ggpubr::stat_compare_means(
-#     #comparisons = group_comp,
-#     ggplot2::aes(label = paste0("Wilcoxon, p =", ..p.format..)),
-#                  label.x = 1.3)
-#
-# p2 <- ggpubr::ggpar(p,
-#             title = "SYTL5 expression - adrenal gland",
-#             subtitle = "",
-#             caption = "",
-#             xlab ="",
-#             ylab = bquote(log[2] ~ (TPM + 1))
-# )
-#
-# p2
-#
-#
-
->>>>>>> daf661b6e8d276ec00dd36edf743bf66ce0ec572
 
 log4r_layout <-
   function(level, ...) {
