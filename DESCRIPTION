@@ -1,0 +1,35 @@
+Package: gtexRNA
+Type: Package
+Title: Retrieval of tissue- and gene-specific gene expression data from GTex
+Version: 0.1.0
+Date: 2021-12-03
+Authors@R: 
+    c(person(given = "Sigve",
+             family = "Nakken",
+             role = c("aut", "cre"),
+             email = "sigven@ifi.uio.no",
+             comment = c(ORCID = "0000-0001-8468-2050")))
+Maintainer: Sigve Nakken <sigven@ifi.uio.no>
+URL: https://github.com/sigven/gtexRNA
+BugReports: https://github.com/sigven/gtexRNA/issues
+Description: Functions to download and query GTex database for tissue- and 
+    gene-specific gene expression estimates, where results are provided on a 
+    per-sample basis. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.6)
+biocViews: 
+Imports: dplyr,
+         assertthat,
+         assertable,
+         data.table,
+         jsonlite,
+         stringr,
+         log4r,
+         tidyr,
+         RCurl,
+         magrittr,
+         rlang
+RoxygenNote: 7.1.2
