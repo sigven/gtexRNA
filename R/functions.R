@@ -3,7 +3,9 @@
 #' @param download_dir target local directory for download file
 #' @param overwrite do not overwrite (FALSE) if expression file exist, or overwrite (TRUE)
 #' @param gtex_version version of gtex database
-#' @export
+#'
+#' @keywords internal
+#'
 #'
 download_raw_data <- function(
   download_dir = NULL,
@@ -84,7 +86,7 @@ download_raw_data <- function(
 #' @param max_autolysis_score Set maximum allowed autolysis score for samples
 #' retrieved (1 (None) to 3 (Severe))
 #'
-#' @export
+#' @keywords internal
 #'
 get_sample_identifiers <- function(
   tissue = "Adrenal Gland",
@@ -340,27 +342,34 @@ NULL
 utils::globalVariables(c("."))
 
 
-#' Function that retrieves gene expression data for a given set of
-#' genes from GTEx, using the public API. A tissue type must be provided
+#' Retrieve sample gene expression data from GTEx
+#'
+#' Retrieves sample gene expression data from GTEx, using the public API.
+#' A tissue type must be provided, and also a character vector with genes of interest.
 #' Gene expression estimates are provided for all samples of that tissue type,
 #' with two different expression units provided (TPM, log2(TPM + 1))
 #'
 #' @param tissue_type tissue type
-#' @param genes character vector with primary gene symbols@
+#' @param genes character vector with primary gene symbols
 #' @param gtex_version version of GTEx
 #'
 #' @export
 #'
-get_tpm_data_api <- function(
+get_tpm_data <- function(
   tissue_type = "Breast_Mammary_Tissue",
   genes = NULL,
   gtex_version = "v8"){
 
-  stopifnot(!is.null(genes))
-
   logger <- log4r::logger(
     threshold = "INFO",
     appenders = log4r::console_appender(log4r_layout))
+
+  if(is.null(genes)){
+    log4r_info(logger, msg = paste0(
+      "ERROR: argument 'genes' is NULL - ",
+      "a character vector of gene symbols is mandatory"))
+    return()
+  }
 
   val1 <- assertthat::validate_that(
     tissue_type %in% unique(gtexRNA::sampleMetadata$tissue_site_detail_id)
@@ -375,6 +384,10 @@ get_tpm_data_api <- function(
     )
     return()
   }
+
+  log4r_info(logger, msg = paste0(
+    "Using tissue_type: ", tissue_type,
+    " - as provided with argument 'tissue_type'"))
 
   gene_symbol_df <-
     data.frame('symbol' = genes, stringsAsFactors = F) %>%
@@ -404,7 +417,8 @@ get_tpm_data_api <- function(
                        'unit' = results$geneExpression[i, ]$unit,
                        stringsAsFactors = F) %>%
         dplyr::mutate(
-          log2_tpm_plus_1 = log2(.data$tpm + 1))
+          log2_tpm_plus_1 = log2(.data$tpm + 1),
+          gtex_version = gtex_version)
 
       tpm_long <-
         dplyr::bind_rows(tpm_long, df)

@@ -28,3 +28,4 @@ retrieved (1 (None) to 3 (Severe))}
 Function that retrieves GTex RNA-seq sample identifiers
 for a given tissue type
 }
+\keyword{internal}

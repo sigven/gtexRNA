@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retrieval of tissue- and gene-specific gene expression data from GTex • gtexRNA</title>
+<title>Retrieval of tissue-specific expression data from GTEx • gtexRNA</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Retrieval of tissue- and gene-specific gene expression data from GTex">
+<script src="pkgdown.js"></script><meta property="og:title" content="Retrieval of tissue-specific expression data from GTEx">
 <meta property="og:description" content="Functions to download and query GTex database for tissue- and 
     gene-specific gene expression estimates, where results are provided on a 
     per-sample basis. ">
@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">gtexRNA</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
       </span>
     </div>
 
@@ -64,9 +64,33 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-Functions to download and query GTex database for tissue- and 
-    gene-specific gene expression estimates, where results are provided on a 
-    per-sample basis. 
+
+<div class="section level3">
+<h3 id="gtexrna---easy-retrieval-of-tissue-specific-expression-data-from-gtex">gtexRNA - Easy retrieval of tissue-specific expression data from GTEx<a class="anchor" aria-label="anchor" href="#gtexrna---easy-retrieval-of-tissue-specific-expression-data-from-gtex"></a>
+</h3>
+<div class="section level4">
+<h4 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h4>
+<p>This R package provides a simple function to query <a href="https://gtexportal.org/home/" class="external-link">GTEx (v8)</a> for gene expression levels, using a set of human gene symbols and a particular tissue type as its main arguments. The function utilizes the <a href="https://gtexportal.org/home/api-docs/index.html" class="external-link">GTEx API</a> to retrieve the data. A brief example:</p>
+<p><code>devtools::install_github('sigven/gtexRNA')</code></p>
+<p><code>exp_dist_gtex &lt;- gtexRNA::get_tpm_data(genes = c('KRAS','BRAF'), tissue_type = 'Bladder')</code></p>
+<p><code>exp_dist_gtex</code> is a data.frame with all gene expression levels pr. sample, provided with TPM and log2(TPM + 1).</p>
+<p>To see the available types of tissues that can be queried, explore the metadata file:</p>
+<p><code>unique(gtexRNA::sampleMetadata$tissue_site_detail_id)</code></p>
+<p><strong>PS</strong>: We have not yet found a way to retrieve the actual sample identifiers from the <a href="https://gtexportal.org/home/api-docs/index.html#!/expression/geneExpression" class="external-link">API method</a>, so <code><a href="reference/get_tpm_data.html">get_tpm_data()</a></code> will currently thus return sample records without any sample identifiers.</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="contact">Contact<a class="anchor" aria-label="anchor" href="#contact"></a>
+</h3>
+<p>sigven AT ifi.uio.no</p>
+</div>
+<div class="section level3">
+<h3 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h3>
+<p>Please note that this project is released with a <a href="https://github.com/sigven/gtexRNA/blob/main/.github/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+</div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -86,6 +110,12 @@ Functions to download and query GTex database for tissue- and
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>

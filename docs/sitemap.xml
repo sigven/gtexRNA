@@ -4,6 +4,9 @@
     <loc>/404.html</loc>
   </url>
   <url>
+    <loc>/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
     <loc>/LICENSE-text.html</loc>
   </url>
   <url>
@@ -23,6 +26,9 @@
   </url>
   <url>
     <loc>/reference/get_sample_identifiers.html</loc>
+  </url>
+  <url>
+    <loc>/reference/get_tpm_data.html</loc>
   </url>
   <url>
     <loc>/reference/get_tpm_data_api.html</loc>
