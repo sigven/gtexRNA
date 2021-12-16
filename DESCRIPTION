@@ -10,7 +10,8 @@ Authors@R:
              email = "sigven@ifi.uio.no",
              comment = c(ORCID = "0000-0001-8468-2050")))
 Maintainer: Sigve Nakken <sigven@ifi.uio.no>
-URL: https://github.com/sigven/gtexRNA
+URL: https://github.com/sigven/gtexRNA,
+    https://sigven.github.io/gtexRNA
 BugReports: https://github.com/sigven/gtexRNA/issues
 Description: Functions to download and query GTex database for tissue- and 
     gene-specific gene expression estimates, where results are provided on a 
