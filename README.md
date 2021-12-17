@@ -1,8 +1,8 @@
-### gtexRNA - Easy retrieval of tissue-specific expression data from GTEx
+### gtexRNA - Quick retrieval of tissue-specific expression data from GTEx
 
 #### Overview
 
-This R package provides a simple function to query [GTEx (v8)](https://gtexportal.org/home/) for gene expression levels, using a set of human gene symbols and a particular tissue type as its main arguments. The function utilizes the [GTEx API](https://gtexportal.org/home/api-docs/index.html) to retrieve the data. A brief example:
+This R package provides a simple wrapper function to query [GTEx (v8)](https://gtexportal.org/home/) for gene expression levels in healthy human tissues, using a set of human gene symbols and a particular tissue type as its main arguments. The function utilizes the [GTEx API](https://gtexportal.org/home/api-docs/index.html) to retrieve the data. A brief example:
 
 `devtools::install_github('sigven/gtexRNA')` 
 
