@@ -4,9 +4,15 @@
 
 This R package provides a simple wrapper function to query [GTEx (v8)](https://gtexportal.org/home/) for gene expression levels in healthy human tissues, using a set of human gene symbols and a particular tissue type as its main arguments. The function utilizes the [GTEx API](https://gtexportal.org/home/api-docs/index.html) to retrieve the data. A brief example:
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/sigven/gtexRNA/workflows/R-CMD-check/badge.svg)](https://github.com/sigven/gtexRNA/actions)
+
+<!-- badges: end -->
+
 #### Example usage
 
-`devtools::install_github('sigven/gtexRNA')` 
+`devtools::install_github('sigven/gtexRNA')`
 
 `exp_dist_gtex <- gtexRNA::get_tpm_data(genes = c('KRAS','BRAF'), tissue_type = 'Bladder')`
 
