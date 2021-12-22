@@ -1,7 +1,7 @@
 Package: gtexRNA
 Type: Package
 Title: Retrieval of tissue-specific expression data from GTEx
-Version: 0.2.1
+Version: 0.2.2
 Date: 2021-12-22
 Authors@R: 
     c(person(given = "Sigve",
