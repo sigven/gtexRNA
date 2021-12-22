@@ -385,6 +385,14 @@ get_tpm_data <- function(
     return()
   }
 
+  tcga_study_match <-
+    unique(gtexRNA::sampleMetadata[
+      gtexRNA::sampleMetadata$tissue_site_detail_id == tissue_type,]$tcga_study_match)
+
+  sample_type <-
+    unique(gtexRNA::sampleMetadata[
+      gtexRNA::sampleMetadata$tissue_site_detail_id == tissue_type,]$sample_type)
+
   log4r_info(logger, msg = paste0(
     "Using tissue_type: ", tissue_type,
     " - as provided with argument 'tissue_type'"))
@@ -413,8 +421,9 @@ get_tpm_data <- function(
                        'ensembl_gene_id' =
                          results$geneExpression[i, ]$gencodeId,
                        'tissue_type' = tissue_type,
-                       'sample_type' = 'normal',
+                       'sample_type' = sample_type,
                        'unit' = results$geneExpression[i, ]$unit,
+                       'tcga_study_match' = tcga_study_match,
                        stringsAsFactors = F) %>%
         dplyr::mutate(
           log2_tpm_plus_1 = log2(.data$tpm + 1),

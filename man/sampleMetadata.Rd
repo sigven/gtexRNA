@@ -14,6 +14,7 @@ A data.frame with seven columns, and 17,832 rows:
   \item \emph{autolysis_score} - Autolysis score (1 to 3)
   \item \emph{tissue_site_detail_id} - Slight modification of 'tissue_type_detailed', used for querying API
   \item \emph{num_tissue_samples} - Number of samples for a given 'tissue_site_detail_id'
+  \item \emph{tcga_study_match} - Matching TCGA study (for type of tissue)
 }
 }
 \usage{
