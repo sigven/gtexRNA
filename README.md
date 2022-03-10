@@ -26,7 +26,7 @@ To see the available types of tissues that can be queried, explore the metadata 
 
 ### Contact
 
-sigven AT ifi.uio.no
+sigven@ifi.uio.no
 
 ### Code of Conduct
 
